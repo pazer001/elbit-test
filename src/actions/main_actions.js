@@ -1,0 +1,2 @@
+export const setSelectedLayout = id => ({type: `SET_SELECTED_LAYOUT`, payload: id});
+export const addWidgetToCell = (cellId, widgetName) => ({type: `ADD_WIDGET_TO_CELL`, payload: {cellId, widgetName}});
