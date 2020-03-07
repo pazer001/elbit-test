@@ -31,7 +31,7 @@ const Configurations = props => {
     const layout = useSelector(state => state.layouts[state.selectedLayout]);
     const widgets = useSelector(state => state.widgets);
     const dispatch = useDispatch();
-console.log(layout)
+
     const onCellDrop = (e, cellId) => {
         e.preventDefault();
         const widgetId = e.dataTransfer.getData('widgetId');
@@ -45,14 +45,10 @@ console.log(layout)
                 return <Button>Example</Button>;
 
             case 'Checkbox':
-                return <Checkbox></Checkbox>;
+                return <Checkbox />;
 
             case 'Select':
-                return <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    value={10}
-                >
+                return <Select value={10}>
                     <MenuItem value={10}>Ten</MenuItem>
                     <MenuItem value={20}>Twenty</MenuItem>
                     <MenuItem value={30}>Thirty</MenuItem>
@@ -61,7 +57,6 @@ console.log(layout)
             case 'Slider':
                 return <Slider
                     defaultValue={30}
-                    aria-labelledby="discrete-slider"
                     valueLabelDisplay="auto"
                     step={10}
                     marks
@@ -82,7 +77,7 @@ console.log(layout)
                     <Paper>
                         <List component="nav">
                             {widgets.map((widget, key) =>
-                                <ListItem>
+                                <ListItem key={key}>
                                     <ListItemText primary={widget} draggable={true}
                                                   onDragStart={(e) => e.dataTransfer.setData('widgetId', key)}/>
                                 </ListItem>
@@ -99,8 +94,8 @@ console.log(layout)
                                      key={layoutObject.i}
                                      onDragOver={e => e.preventDefault()}
                                      onDrop={(e) => onCellDrop(e, key)}>
-                                    {Boolean(layoutObject.widgets && layoutObject.widgets.length) && layoutObject.widgets.map(widgetName =>
-                                        <div>{widgetsFactory(widgetName)}</div>
+                                    {Boolean(layoutObject.widgets && layoutObject.widgets.length) && layoutObject.widgets.map((widgetName, key) =>
+                                        <div key={key}>{widgetsFactory(widgetName)}</div>
                                     )}
                                 </div>
                             )}

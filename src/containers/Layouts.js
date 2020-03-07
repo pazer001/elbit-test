@@ -20,7 +20,7 @@ const Layouts = props => {
                 <Paper><Typography variant="h1" component="h2">Layouts</Typography></Paper>
             </Grid>
             {layouts.map((layout, key) =>
-                <Grid item xs={4}>
+                <Grid item xs={4} key={key}>
                     <Paper onClick={() => dispatch(setSelectedLayout(key))}>
                         <Typography>Select this layout</Typography>
                         <GridLayout className="layout" layout={layout} cols={12} rowHeight={30} width={1200}>

@@ -29,7 +29,6 @@ const initialState  =   {
 function mainReducer(state = initialState, action) {
     switch (action.type) {
         case `SET_SELECTED_LAYOUT`:
-            // window.location.href   =   `/configurations`;
             return {
                 ...state,
                 selectedLayout: action.payload
